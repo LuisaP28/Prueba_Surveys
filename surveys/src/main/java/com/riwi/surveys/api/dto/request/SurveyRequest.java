@@ -18,7 +18,7 @@ public class SurveyRequest {
     private String description;
     @NotBlank(message = "Date is required")
     private LocalDateTime creationDate;
-    private Long creatorId;
+    private Long userId;
     @NotBlank(message = "Active is required")
     private Boolean active;
 }

@@ -9,10 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class QuestionResponse {
-    private Long id; 
+public class OptionquestionResponse {
+    private Long id;
     private String text;
-    private String type;
-    private Long surveyId;
+    private Long questionId;
     private Boolean active;
 }

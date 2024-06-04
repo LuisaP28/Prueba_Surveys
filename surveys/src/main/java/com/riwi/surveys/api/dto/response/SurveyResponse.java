@@ -16,6 +16,6 @@ public class SurveyResponse {
     private String title;
     private String description;
     private LocalDateTime creationDate;
-    private Long creatorId;
+    private Long userId;
     private Boolean active;
 }

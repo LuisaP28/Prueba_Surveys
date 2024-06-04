@@ -11,6 +11,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -35,14 +36,14 @@ public class SurveyEntity {
     private String description;
     @Column(nullable = false)
     private LocalDateTime creationDate;
-    private Long creatorId;
     @Column(nullable = false)
     private Boolean active;
 
-    @OneToMany(mappedBy = "surveyId", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = false)
+    @OneToMany(mappedBy = "survey", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = false)
     @Builder.Default
-    private List<QuestionEntity> quiestions = new ArrayList<>();
+    private List<QuestionEntity> questions = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private UserEntity users;
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntity user;
 }
