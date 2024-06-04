@@ -2,12 +2,14 @@ package com.riwi.surveys.domain.entities;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -16,7 +18,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name = "questions")
+@Entity(name = "question")
 @Getter
 @Setter
 @Builder
@@ -35,9 +37,10 @@ public class QuestionEntity {
     private Boolean active;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private SurveyEntity surveys;
+    @JoinColumn(name = "survey_id", nullable = false)
+    private SurveyEntity survey;
 
-    // @OneToMany(mappedBy = "questions", fetch = FetchType.LAZY, cascade = CascadeType.ALL,
-    // orphanRemoval = true)
-    // private List<OptionquestionEntity> optionquestions;
+    @OneToMany(mappedBy = "question", fetch = FetchType.LAZY, cascade = CascadeType.ALL,
+    orphanRemoval = true)
+    private List<OptionquestionEntity> optionquestions;
 }

@@ -13,8 +13,6 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class SurveyMapper implements ISurveyMapper{
 
-    // @Autowired
-    // private final  surveryMapper;
     
     @Override
     public SurveyEntity requestToEntity(SurveyRequest request){
@@ -23,7 +21,6 @@ public class SurveyMapper implements ISurveyMapper{
                 .title(request.getTitle())
                 .description(request.getDescription())
                 .creationDate(request.getCreationDate())
-                .creatorId(request.getCreatorId())
                 .active(request.getActive())
                 .build();
     }
@@ -35,7 +32,6 @@ public class SurveyMapper implements ISurveyMapper{
                 .title(entity.getTitle())
                 .description(entity.getDescription())
                 .creationDate(entity.getCreationDate())
-                .creatorId(entity.getCreatorId())
                 .active(entity.getActive())
                 .build();
     }
